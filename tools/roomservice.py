@@ -175,7 +175,7 @@ def add_to_manifest(repositories, fallback_branch = None):
 
         print('Adding dependency: Bee-Rom/%s -> %s' % (repo_name, repo_target))
         project = ElementTree.Element("project", attrib = { "path": repo_target,
-            "remote": "github", "name": "Bee-Rom/%s" % repo_name })
+            "remote": "github", "name": "Bee-Rom/%s" % repo_name, "revision": "beepop" })
 
         if 'branch' in repository:
             project.set('revision',repository['branch'])
@@ -197,7 +197,7 @@ def add_to_manifest(repositories, fallback_branch = None):
 
 def fetch_dependencies(repo_path, fallback_branch = None):
     print('Looking for dependencies')
-    dependencies_path = repo_path + '/Bee-Rom.dependencies'
+    dependencies_path = repo_path + '/bee.dependencies'
     syncable_repos = []
 
     if os.path.exists(dependencies_path):
